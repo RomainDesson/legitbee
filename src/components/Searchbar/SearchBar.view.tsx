@@ -16,6 +16,7 @@ export const SearchBarView = ({ handleSearchedMovie, handleDateFilter, handleTyp
                 <StyledInput
                     type={"search"}
                     onChange={e => handleSearchedMovie(e.target.value)}
+                    data-testid={"searchbar-input"}
                 />
             </SearchBarWrapper>
             <FilterWrapper>
