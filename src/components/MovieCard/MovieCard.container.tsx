@@ -15,6 +15,9 @@ export const MovieCardContainer = ({ movie }: MovieCardContainerProps) => {
 
     const toggleModal = async () => {
         const { data } = await axios.get(`${BaseURL}i=${movie.imdbID}`)
+            .catch(err => {
+            throw new Error(err)
+        })
         setMovieInfo(data)
         toggle()
     }

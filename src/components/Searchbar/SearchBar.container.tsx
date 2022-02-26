@@ -7,6 +7,8 @@ import { BaseURL } from "../../api";
 
 export const SearchBarContainer = () => {
     const [searchedMovie, setSearchedMovie] = useState("")
+    const [typeFilter, setTypeFilter] = useState("")
+    const [dateFilter, setDateFilter] = useState("")
     const { dispatch } = useMovies()
 
     const handleSearchedMovie = (movie: string) => {
@@ -18,14 +20,24 @@ export const SearchBarContainer = () => {
             dispatch({type: SET_MOVIES, payload: []})
         }
         if (searchedMovie.length >= 3 ) {
-            axios.get(`${BaseURL}s=${searchedMovie}`)
+            axios.get(`${BaseURL}s=${searchedMovie}&type=${typeFilter}&y=${dateFilter}`)
                 .then((res) => {
                     dispatch({type: SET_MOVIES, payload: res.data.Search})
                     dispatch({type: SET_NUMBER_OF_MOVIES, payload: res.data.totalResults})
                 })
-
+                .catch(err => {
+                    throw new Error(err)
+                })
         }
-    }, [searchedMovie])
+    }, [searchedMovie, typeFilter, dateFilter])
 
-    return <SearchBarView handleSearchedMovie={handleSearchedMovie}/>
+    const handleTypeFilter = (filter: string) => {
+        setTypeFilter(filter)
+    }
+
+    const handleDateFilter = (filter: string) => {
+        setDateFilter(filter)
+    }
+
+    return <SearchBarView handleSearchedMovie={handleSearchedMovie} handleDateFilter={handleDateFilter} handleTypeFilter={handleTypeFilter}/>
 }

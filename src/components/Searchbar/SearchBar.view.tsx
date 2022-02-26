@@ -1,10 +1,14 @@
-import { SearchBarWrapper, SearchSectionWrapper, StyledInput } from "./style";
+import { FilterWrapper, SearchBarWrapper, SearchSectionWrapper, StyledInput } from "./style";
+import { DateFilterContainer } from "../Filters/DateFilter/DateFilter.container";
+import { TypeFilterContainer } from "../Filters/TypeFilter/TypeFilter.container";
 
 type SearchBarViewProps = {
     handleSearchedMovie: (movie: string) => void
+    handleDateFilter: (date: string) => void
+    handleTypeFilter: (type: string) => void
 }
 
-export const SearchBarView = ({ handleSearchedMovie }: SearchBarViewProps) => {
+export const SearchBarView = ({ handleSearchedMovie, handleDateFilter, handleTypeFilter }: SearchBarViewProps) => {
     return (
         <SearchSectionWrapper>
             <SearchBarWrapper>
@@ -14,6 +18,10 @@ export const SearchBarView = ({ handleSearchedMovie }: SearchBarViewProps) => {
                     onChange={e => handleSearchedMovie(e.target.value)}
                 />
             </SearchBarWrapper>
+            <FilterWrapper>
+                <DateFilterContainer handleDateFilter={handleDateFilter} />
+                <TypeFilterContainer handleTypeFilter={handleTypeFilter} />
+            </FilterWrapper>
         </SearchSectionWrapper>
     )
 }

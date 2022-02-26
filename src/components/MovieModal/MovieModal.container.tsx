@@ -12,6 +12,5 @@ export const MovieModalContainer = ({ movieInfos, isShowing, toggleModal }: Movi
         return null
     }
 
-
     return <MovieModalView movieInfos={movieInfos} isShowing={isShowing} hideModal={toggleModal} />
 }
