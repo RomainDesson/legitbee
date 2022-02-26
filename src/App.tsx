@@ -1,9 +1,14 @@
+import { HomePageContainer } from "./pages/HomePage/HomePage.container";
+import { MoviesProvider } from "./contexts/MovieContext/context";
+
 function App() {
 
   return (
-    <div className="App">
-
-    </div>
+      <MoviesProvider>
+        <div className="App">
+          <HomePageContainer />
+        </div>
+      </MoviesProvider>
   )
 }
 
