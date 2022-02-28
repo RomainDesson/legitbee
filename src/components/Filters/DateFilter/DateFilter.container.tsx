@@ -7,7 +7,12 @@ type DateFilterContainerProps = {
 
 export const DateFilterContainer = ({ handleDateFilter }: DateFilterContainerProps) => {
     const handleValue = (event: React.ChangeEvent<HTMLInputElement>) => {
-        handleDateFilter(event.target.value)
+        if (event.target.value.length === 0) {
+            handleDateFilter(event.target.value)
+        }
+        if (event.target.value.length === 4) {
+            handleDateFilter(event.target.value)
+        }
     }
     return <DateFilterView handleValue={handleValue} />
 }

@@ -21,8 +21,11 @@ export const FilterWrapper = styled.div`
   margin-right: 10px;
 `
 
-export const StyledInput = styled.input`
-  height: 35px;
-  width: 300px;
+export const StyledInput = styled.input<{h?: string, w?: string}>`
+  height: ${(props) => props.h ? props.h : "35px"};
+  width: ${(props) => props.w ? props.w : "300px"};
   font-size: 20px;
+  border-radius: 10px;
+  border: none;
+  padding: 4px;
 `

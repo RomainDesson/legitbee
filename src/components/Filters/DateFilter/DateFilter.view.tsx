@@ -1,4 +1,5 @@
 import React from "react";
+import { StyledInput } from "../../Searchbar/style";
 
 type DateFilterViewProps = {
     handleValue: (value: React.ChangeEvent<HTMLInputElement>) => void
@@ -7,8 +8,7 @@ type DateFilterViewProps = {
 export const DateFilterView = ({ handleValue }: DateFilterViewProps) => {
     return (
         <div>
-            <span>Release date:</span>
-            <input onChange={handleValue} />
+            <StyledInput onChange={handleValue} placeholder={"Release year"} w={"200"} h={"25"}/>
         </div>
     )
 }

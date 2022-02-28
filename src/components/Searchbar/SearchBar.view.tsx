@@ -12,16 +12,16 @@ export const SearchBarView = ({ handleSearchedMovie, handleDateFilter, handleTyp
     return (
         <SearchSectionWrapper>
             <SearchBarWrapper>
-                <span>Search: </span>
                 <StyledInput
                     type={"search"}
                     onChange={e => handleSearchedMovie(e.target.value)}
                     data-testid={"searchbar-input"}
+                    placeholder={"Search"}
                 />
+                <TypeFilterContainer handleTypeFilter={handleTypeFilter} />
             </SearchBarWrapper>
             <FilterWrapper>
                 <DateFilterContainer handleDateFilter={handleDateFilter} />
-                <TypeFilterContainer handleTypeFilter={handleTypeFilter} />
             </FilterWrapper>
         </SearchSectionWrapper>
     )

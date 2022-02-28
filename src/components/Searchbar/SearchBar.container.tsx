@@ -57,5 +57,5 @@ export const SearchBarContainer = ({ currentPage, handleCurrentPage }: SearchBar
         setDateFilter(filter)
     }
 
-    return <SearchBarView handleSearchedMovie={handleSearchedMovie} handleDateFilter={handleDateFilter} handleTypeFilter={handleTypeFilter}/>
+    return <SearchBarView handleSearchedMovie={handleSearchedMovie} handleDateFilter={handleDateFilter} handleTypeFilter={handleTypeFilter} />
 }

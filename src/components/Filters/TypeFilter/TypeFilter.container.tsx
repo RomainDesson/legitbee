@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import { TypeFilterView } from "./TypeFilter.view";
 
 type TypeFilterContainerProps = {
@@ -6,9 +6,12 @@ type TypeFilterContainerProps = {
 }
 
 export const TypeFilterContainer = ({ handleTypeFilter }: TypeFilterContainerProps) => {
-    const handleValue = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        handleTypeFilter(event.target.value)
+    const [activeFilter, setActiveFilter] = useState("")
+
+    const handleValue = (type: string) => {
+        handleTypeFilter(type)
+        setActiveFilter(type)
     }
 
-    return <TypeFilterView handleValue={handleValue} />
+    return <TypeFilterView handleValue={handleValue} activeFilter={activeFilter}/>
 }

@@ -5,7 +5,7 @@ function App() {
 
   return (
       <MoviesProvider>
-        <div className="App">
+        <div className="App" style={{padding: 0}}>
           <HomePageContainer />
         </div>
       </MoviesProvider>

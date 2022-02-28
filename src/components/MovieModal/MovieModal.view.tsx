@@ -7,8 +7,8 @@ import {
     ModalHeader,
     ModalOverlay,
     ModalTitle,
-    ModalWrapper, MovieInfoWrapper,
-    PosterWrapper
+    ModalWrapper, MovieInfoWrapper, PlotSubWrapper, PlotWrapper,
+    PosterWrapper, SectionHeader, SubTitleWrapper, TitleWrapper, VerticalDivider
 } from "./style";
 import {MovieInfo} from "../../types/MoviesType";
 
@@ -28,7 +28,16 @@ export const MovieModalView = ({ movieInfos, isShowing, hideModal }: MovieModalV
                         <ModalWrapper>
                             <ModalContent>
                                 <ModalHeader>
-                                    <ModalTitle>{Title}</ModalTitle>
+                                    <TitleWrapper>
+                                        <ModalTitle>{Title}</ModalTitle>
+                                        <SubTitleWrapper>
+                                            <span>{Genre}</span>
+                                            <span>|</span>
+                                            <span>{Director}</span>
+                                            <span>|</span>
+                                            <span>{Released}</span>
+                                        </SubTitleWrapper>
+                                    </TitleWrapper>
                                     <button
                                         type="button"
                                         className="modal-close-button"
@@ -41,17 +50,20 @@ export const MovieModalView = ({ movieInfos, isShowing, hideModal }: MovieModalV
                                     <PosterWrapper>
                                         <img src={movieInfos.Poster === "N/A" ? "" : movieInfos.Poster} />
                                     </PosterWrapper>
+                                    <PlotWrapper>
+                                        <SectionHeader>Plot</SectionHeader>
+                                        <PlotSubWrapper>{Plot}</PlotSubWrapper>
+                                    </PlotWrapper>
+                                    <VerticalDivider />
                                     <MovieInfoWrapper>
-                                        <span>Genre : {Genre}</span>
-                                        <span>Director : {Director}</span>
-                                        <span>Released: {Released}</span>
+                                        <SectionHeader>General informations</SectionHeader>
                                         <span>Language : {Language}</span>
                                         <span>Country : {Country}</span>
-                                        <span>Plot : {Plot}</span>
-                                        <span>Awards : {Awards}</span>
-                                        <span>Metascore : {Metascore}</span>
                                         <span>Box Office : {BoxOffice}</span>
                                         <span>Actors : {Actors}</span>
+                                        <SectionHeader>Ratings and awards</SectionHeader>
+                                        <span>Awards : {Awards}</span>
+                                        <span>Metascore : {Metascore}</span>
                                         {Ratings.map((rating) => {
                                             return <span key={rating.Source}>{rating.Source} : {rating.Value}</span>
                                         })}
